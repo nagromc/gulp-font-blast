@@ -1,4 +1,6 @@
+(function () {
 'use strict';
+
 const path = require('path');
 const gutil = require('gulp-util');
 const through = require('through2');
@@ -22,7 +24,7 @@ module.exports = function (dest, opts) {
 		try {
 			var iconnames = require('js-yaml').safeLoad(fs.readFileSync(file.base + "icons.yml", 'utf8')).icons;
 			var convertFilenames = {};
-		
+
 			var iconNamingConventions = yaml.safeLoad(file.base + "icons.yml").icons;
 			iconnames.forEach(function (icon) {
 				convertFilenames[icon.unicode] = icon.id;
@@ -38,3 +40,5 @@ module.exports = function (dest, opts) {
 };
 
 module.exports.blast = blast;
+
+}());
